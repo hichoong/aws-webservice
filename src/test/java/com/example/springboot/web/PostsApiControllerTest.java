@@ -2,8 +2,8 @@ package com.example.springboot.web;
 
 import com.example.springboot.domain.posts.Posts;
 import com.example.springboot.domain.posts.PostsRepository;
-import com.example.springboot.dto.PostsSaveRequestDto;
-import com.example.springboot.dto.PostsUpdateRequestDto;
+import com.example.springboot.web.dto.PostsSaveRequestDto;
+import com.example.springboot.web.dto.PostsUpdateRequestDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
