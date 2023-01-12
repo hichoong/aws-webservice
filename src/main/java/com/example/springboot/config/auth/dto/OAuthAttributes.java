@@ -25,15 +25,29 @@ public class OAuthAttributes {
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
-        return ofGoogle(userNameAttributeName, attributes);
+        if("naver".equals(registrationId)) { //네이버 요청시 네이버 소셜로그인
+            return ofNaver("id", attributes);
+        }
+        return ofGoogle(userNameAttributeName, attributes); // 아닐시 구글 로그인
     }
 
-    public static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
+    public static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) { //구글 로그인 정보
         return OAuthAttributes.builder()
                 .name((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
                 .picture((String)attributes.get("picture") )
                 .attributes(attributes)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
+
+    public static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) { //네이버 로그인 정보
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+        return OAuthAttributes.builder()
+                .name((String) response.get("name"))
+                .email((String) response.get("email"))
+                .picture((String )response.get("profile_image") )
+                .attributes(response)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
