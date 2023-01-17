@@ -45,6 +45,7 @@ deploy:
     secret_access_key:  $AWS_SECRET_KEY
     bucket: aws-webservice-build # s3버킷
     key: aws-webservice.zip
+    bundle_type: zip
     application: aws-webservice #AWS deploy에서 등록한 애플리케이션
     deployment_group: aws-webservice-group # AWS deploy에서 등록한 배포그룹
     region: ap-northeast-2
