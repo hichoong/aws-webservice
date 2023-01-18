@@ -1,9 +1,9 @@
-version: 0.0 # code deploy 버전
+version: 0.0
 os: linux
 files:
-  - source: / # CodeDeploy에서 전달해 준 파일 중 destination으로 이동시킬 대상 현재는 전부
-    destination: /home/ec2-user/app/step3/zip/ # source에서 지정된 파일을 받을 위치
-    overwrite: yes # 덮어쓰기
+  - source:  /
+    destination: /home/ec2-user/app/step3/zip/
+    overwrite: yes# 덮어쓰기
 
 permissions:
   - object: /
@@ -24,4 +24,3 @@ hooks:
     - location: health.sh # 새 스프링 부트가 정상적으로 실행됐는지 확인
       timeout: 60
       runas: ec2-user
-
